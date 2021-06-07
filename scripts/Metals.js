@@ -9,7 +9,6 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "metal") {
             setMetal(parseInt(event.target.value));
-            window.alert(`User chose metal ${event.target.value}`);
         };
     }
 );
