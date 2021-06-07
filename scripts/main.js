@@ -1,10 +1,10 @@
-import { KneelDiamonds } from "./KneelDiamonds.js"
+import { KneelDiamonds } from "./KneelDiamonds.js";
 
-const mainContainer = document.querySelector("#container")
+const mainContainer = document.querySelector("#container");
 
 const renderAllHTML = () => {
-    mainContainer.innerHTML = KneelDiamonds()
-}
+    mainContainer.innerHTML = KneelDiamonds();
+};
 
-renderAllHTML()
+renderAllHTML();
 
