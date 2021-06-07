@@ -1,13 +1,16 @@
-import { getMetals } from "./database.js";
+import { getMetals, setMetal } from "./database.js";
+
 
 const metals = getMetals()
+
 
 document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "metal") {
-            window.alert(``);
-        }
+            setMetal(parseInt(event.target.value));
+            window.alert(`User chose metal ${event.target.value}`);
+        };
     }
 );
 
