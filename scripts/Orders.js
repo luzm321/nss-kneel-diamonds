@@ -1,7 +1,6 @@
 import { getOrders, getMetals, getSizes, getStyles } from "./database.js";
 
 const metals = getMetals();
-const orders = getOrders();
 const sizes = getSizes();
 const styles = getStyles();
 
