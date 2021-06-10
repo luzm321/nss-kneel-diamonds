@@ -1,15 +1,19 @@
-import { getStyles, setStyle } from "./database.js";
+import { getStyles, setStyle, checkOrderState } from "./database.js";
+import { dispatchOrderBtnEvent } from "./orderBtnEvent.js";
 
 const styles = getStyles()
 
-document.addEventListener(
-    "change",
-    (event) => {
-        if (event.target.name === "style") {
-            setStyle(parseInt(event.target.value));
+// Event Listener below: If the checkOrderState fxn contains all the values for each option, trigger the dispatchOrderBtnEvent fxn that will 
+// implement the showOrderBtn custom event
+
+document.addEventListener("change", (event) => {
+    if (event.target.name === "style") {
+        setStyle(parseInt(event.target.value));
+        if ( checkOrderState() ) {
+            dispatchOrderBtnEvent()
         };
-    }
-);
+    };
+});
 
 export const JewelryStyles = () => {
     let html = "<ul>"

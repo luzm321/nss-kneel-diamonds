@@ -2,17 +2,27 @@ import { DiamondSizes } from "./DiamondSizes.js";
 import { Metals } from "./Metals.js";
 import { JewelryStyles } from "./JewelryStyles.js";
 import { Orders } from "./Orders.js";
-import { addCustomOrder} from "./database.js";
+import { addCustomOrder, checkOrderState} from "./database.js";
 
 // Add click event listener and implement/invoke addCustomerOrder function to the Create Custom Order Button by targeting its id
+// If checkOrderState() fxn is true and contains all the option values, then execute addCustomOrder function, else display alert:
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-            addCustomOrder();
+            if (checkOrderState()) {
+                addCustomOrder();
+            } else {
+                window.alert("Please select from all options before placing order.")
+            };
+            
         };
     }
 );
+
+// Event listener below removes the isHidden class from the create custom order button so it is displayed to DOM:
+
+document.addEventListener("showOrderBtn", () => document.querySelector(".orderButton").classList.remove("isHidden"))
 
 export const KneelDiamonds = () => {
     return `
@@ -34,7 +44,7 @@ export const KneelDiamonds = () => {
         </article>
 
         <article>
-            <button id="orderButton">Create Custom Order</button>
+            <button id="orderButton" class="orderButton isHidden">Create Custom Order</button>
         </article>
 
         <article class="customOrders">

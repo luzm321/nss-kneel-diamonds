@@ -37,3 +37,9 @@ ul {
   margin-left: 25px;
 }
 
+/* targets the isHidden class to initially display nothing  */
+
+.isHidden {
+  display: none;
+}
+

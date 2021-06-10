@@ -41,6 +41,8 @@ const database = {
     }
 };
 
+// Get Functions:
+
 export const getStyles = () => {
     return database.styles.map(style => ({...style}));
 };
@@ -57,6 +59,8 @@ export const getOrders = () => {
     return database.customOrders.map(order => ({...order}));
 };
 
+// Set/Save Functions to store/record the temporary/transient state of the orderBuilder object:
+
 export const setMetal = (id) => {
     database.orderBuilder.metalId = id
 };
@@ -67,6 +71,16 @@ export const setSize = (id) => {
 
 export const setStyle = (id) => {
     database.orderBuilder.styleId = id
+};
+
+// Function that checks the current order state to verify if each option has been chosen
+
+export const checkOrderState = () => {
+    return (
+      "metalId" in database.orderBuilder &&
+      "sizeId" in database.orderBuilder &&
+      "styleId" in database.orderBuilder
+    );
 };
 
 
