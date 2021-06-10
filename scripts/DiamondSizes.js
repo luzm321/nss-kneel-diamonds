@@ -1,7 +1,7 @@
-import { getSizes, setSize, checkOrderState } from "./database.js";
+import { getSizes, setSize, checkOrderState } from "./dataAccess.js";
 import { dispatchOrderBtnEvent } from "./orderBtnEvent.js";
 
-const sizes = getSizes()
+const sizes = getSizes();
 
 // Event Listener below: If the checkOrderState fxn contains all the values for each option, trigger the dispatchOrderBtnEvent fxn that will 
 // implement the showOrderBtn custom event

@@ -1,8 +1,9 @@
 import { DiamondSizes } from "./DiamondSizes.js";
 import { Metals } from "./Metals.js";
 import { JewelryStyles } from "./JewelryStyles.js";
+import { Types } from "./Types.js";
 import { Orders } from "./Orders.js";
-import { addCustomOrder, checkOrderState} from "./database.js";
+import { addCustomOrder, checkOrderState} from "./dataAccess.js";
 
 // Add click event listener and implement/invoke addCustomerOrder function to the Create Custom Order Button by targeting its id
 // If checkOrderState() fxn is true and contains all the option values, then execute addCustomOrder function, else display alert:
@@ -42,7 +43,9 @@ export const KneelDiamonds = () => {
                 ${JewelryStyles()}
             </section>
         </article>
-
+        <article class="accessories">
+            ${Types()}
+        </article>
         <article>
             <button id="orderButton" class="orderButton isHidden">Create Custom Order</button>
         </article>

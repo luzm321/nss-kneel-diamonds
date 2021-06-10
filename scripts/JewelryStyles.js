@@ -1,4 +1,4 @@
-import { getStyles, setStyle, checkOrderState } from "./database.js";
+import { getStyles, setStyle, checkOrderState } from "./dataAccess.js";
 import { dispatchOrderBtnEvent } from "./orderBtnEvent.js";
 
 const styles = getStyles()

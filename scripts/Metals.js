@@ -1,4 +1,4 @@
-import { getMetals, setMetal, checkOrderState } from "./database.js";
+import { getMetals, setMetal, checkOrderState } from "./dataAccess.js";
 import { dispatchOrderBtnEvent } from "./orderBtnEvent.js";
 
 const metals = getMetals()
@@ -19,7 +19,7 @@ document.addEventListener("change", (event) => {
 export const Metals = () => {
     let html = "<ul>"
 
-    // This is how you have been converting objects to <li> elements
+    // This is how you convert objects to <li> elements
     for (const metal of metals) {
         html += `<li>
             <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}

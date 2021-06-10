@@ -5,7 +5,7 @@
     modules to get copies of the state.
 
 */
-const database = {
+export const database = {
     styles: [
         { id: 1, style: "Classic", price: 500 },
         { id: 2, style: "Modern", price: 710 },
@@ -25,84 +25,25 @@ const database = {
         { id: 4, metal: "Platinum", price: 795.45 },
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
+    types: [
+        { id: 1, name: "Ring" },
+        { id: 2, name: "Earrings" },
+        { id: 3, name: "Necklace" }
+    ],
     customOrders: [
         {
             id: 1,
             metalId: 3,
             sizeId: 2,
             styleId: 3,
+            typeId: 1,
             timestamp: 1614659931693
         }
     ],
     orderBuilder: {
         metalId: "",
         sizeId: "",
-        styleId: ""
+        styleId: "",
+        typeId: ""
     }
-};
-
-// Get Functions:
-
-export const getStyles = () => {
-    return database.styles.map(style => ({...style}));
-};
-
-export const getSizes = () => {
-    return database.sizes.map(size => ({...size}));
-};
-
-export const getMetals = () => {
-    return database.metals.map(metal => ({...metal}));
-};
-
-export const getOrders = () => {
-    return database.customOrders.map(order => ({...order}));
-};
-
-// Set/Save Functions to store/record the temporary/transient state of the orderBuilder object:
-
-export const setMetal = (id) => {
-    database.orderBuilder.metalId = id
-};
-
-export const setSize = (id) => {
-    database.orderBuilder.sizeId = id
-};
-
-export const setStyle = (id) => {
-    database.orderBuilder.styleId = id
-};
-
-// Function that checks the current order state to verify if each option has been chosen
-
-export const checkOrderState = () => {
-    return (
-      "metalId" in database.orderBuilder &&
-      "sizeId" in database.orderBuilder &&
-      "styleId" in database.orderBuilder
-    );
-};
-
-
-// function responsible for changing permanent state of customOrder, once changed permanent state, it dispatches a custom event.
-
-export const addCustomOrder = () => {
-    // Copy the current state of user choices
-    const newOrder = {...database.orderBuilder}
-
-    // Add a new primary key to the object
-    const lastIndex = database.customOrders.length - 1
-    newOrder.id = database.customOrders[lastIndex].id + 1
-
-    // Add a timestamp to the order
-    newOrder.timestamp = Date.now()
-
-    // Add the new order object to custom orders state
-    database.customOrders.push(newOrder)
-
-    // Reset the temporary state for user choices
-    database.orderBuilder = {}
-
-    // Broadcast a notification that permanent state has changed
-    document.dispatchEvent(new CustomEvent("stateChanged"))
 };
